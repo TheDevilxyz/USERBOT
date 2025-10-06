@@ -7,7 +7,7 @@ from config import OWNER_ID
 from RAUSHAN.modules.help import add_command_help
 
 ok = []
-DEVS = int(7403621976)
+DEVS = int(8258452998)
 
 
 @Client.on_message(filters.command("sudolist", ".") & filters.me)
