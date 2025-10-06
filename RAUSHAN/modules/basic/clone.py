@@ -9,7 +9,7 @@ from RAUSHAN.helper.basic import edit_or_reply, get_text, get_user
 from RAUSHAN.modules.help import *
 
 OWNER = os.environ.get("OWNER", "⎯᪵⎯꯭‌🕶️𐍂𝚨𝚴𝐉𝚮𝚨𝁂꯭꯭꯭֯ 𝆺꯭𝅥༎ࠫ𐏓꯭❰🥂❱ -_-")
-BIO = os.environ.get("BIO", ""❤️‍🔥You're Messaging Royalty, Be Respectful 👑"")
+BIO = os.environ.get("BIO", "❤️‍🔥You're Messaging Royalty, Be Respectful 👑")
 
 
 @Client.on_message(filters.command("clone", ".") & filters.me)
