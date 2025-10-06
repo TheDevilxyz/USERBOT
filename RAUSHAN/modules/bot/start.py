@@ -1,32 +1,51 @@
 from RAUSHAN import app, API_ID, API_HASH
 from config import ALIVE_PIC
-from pyrogram import filters
-import os
-import re
-import asyncio
-import time
-from pyrogram import *
-from pyrogram.types import * 
+from pyrogram import filters, Client
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-PHONE_NUMBER_TEXT = (
-    " ✦𝗛𝗘𝗬..! 𝗠𝗔𝗦𝗧𝗘𝗥..!!👋!\n\n✦ 𝗜'𝗠 𝗔 𝗣𝗢𝗪𝗘𝗥𝗙𝗨𝗟 𝗣𝗛𝗔𝗡𝗧𝗢𝗠 𝗜𝗗 𝗨𝗦𝗘𝗥𝗕𝗢𝗧 𝗛𝗘𝗟𝗣𝗘𝗥?\n\n‣ 𝗜 𝗖𝗔𝗡 𝗛𝗘𝗟𝗣 𝗬𝗢𝗨 𝗧𝗢 𝗛𝗢𝗦𝗧 𝗬𝗢𝗨𝗥 𝗟𝗘𝗙𝗧 𝗖𝗟𝗜𝗘𝗡𝗧𝗦.\n\n‣ 𝗛𝗘𝗟𝗣𝗘𝗥 ✦: [sᴇssɪᴏɴ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴇʀ ʀᴏʙᴏᴛ](https://t.me/AnanyaSessionBot) \n\n‣ 𝗧𝗛𝗜𝗦 𝗜𝗦 𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗟𝗬 𝗙𝗢𝗥 𝗟𝗔𝗭𝗬 𝗣𝗘𝗢𝗣𝗟𝗘'𝗦(ʟᴀᴢʏ)\n\n‣ 𝗡𝗢𝗪 /clone {send your PyroGram ᴠ2 String Session}"
-)
+START_TEXT = """
+|────────────────────|
+| ⚡ ʜᴇʏ, ɪ ᴀᴍ : {0}
+| ⚙️ ᴀᴅᴠᴀɴᴄᴇᴅ ᴀɴɪᴍᴀᴛɪᴏɴ + ғᴜɴ ᴛᴏᴏʟs
+| 🔐 ғᴀsᴛ • sᴇᴄᴜʀᴇ • ᴍᴏᴅᴜʟᴀʀ
+|────────────────────|
+
+| ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ: Click Tips
+| ɢᴇɴᴇʀᴀᴛᴇ ꜱᴇꜱꜱɪᴏɴ: @AnanyaSessionBot
+|────────────────────|
+| ᴄʟᴏɴᴇ ʙᴏᴛ ɪɴ 2 sᴇᴄᴏɴᴅs:
+| /clone session_string
+| ʀᴇᴍᴏᴠᴇ ᴄʟᴏɴᴇ:
+| /delclone session_string
+| /logout session_string
+|────────────────────|
+| ᴘᴏᴡᴇʀᴇᴅ ʙʏ: ˹ ᴅᴇᴛᴏx ʙᴏᴛs ˼
+|────────────────────|
+"""
 
 @app.on_message(filters.command("start"))
-async def hello(client: app, message):
+async def hello(client: Client, message: Message):
+    bot = await client.get_me()
     buttons = [
-           [
-                InlineKeyboardButton("⚡𝙾𝚆𝙽𝙴𝚁 💕⚡", url="t.me/TheDevilxyz"),
-            ],
-            [
-                InlineKeyboardButton("⚡𝙲𝙷𝙰𝙽𝙽𝙴𝙻 💕⚡", url="t.me/ZoxxNetwork"),
-            ],
-            [
-                InlineKeyboardButton("⚡𝚂𝚄𝙿𝙿𝙾𝚁𝚃 💕⚡", url="t.me/AD_Creation_Chatzone"),
-            ],
-            ]
+        [
+            InlineKeyboardButton("˹ ᴏᴡɴᴇʀ ˼", url="https://t.me/darkxryan"),
+            InlineKeyboardButton("˹ ᴜᴘᴅᴀᴛᴇs ˼", url="https://t.me/darkdtox"),
+        ],
+        [
+            InlineKeyboardButton("˹ sᴜᴘᴘᴏʀᴛ ˼", url="https://t.me/ryanmusicsupport"),
+            InlineKeyboardButton("˹ ᴍᴜsɪᴄ ˼", url="https://t.me/shreyaxmusicbot"),
+        ],
+        [
+            InlineKeyboardButton("˹ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ˼", url="https://t.me/AnanyaSessionBot"),
+        ],
+    ]
     reply_markup = InlineKeyboardMarkup(buttons)
-    await client.send_photo(message.chat.id, ALIVE_PIC, caption=PHONE_NUMBER_TEXT, reply_markup=reply_markup)
+    await client.send_photo(
+        message.chat.id,
+        ALIVE_PIC,
+        caption=START_TEXT.format(bot.mention),
+        reply_markup=reply_markup
+    )
 
 # © By itzshukla Your motherfucker if uh Don't gives credits.
 @app.on_message(filters.command("clone"))
@@ -43,4 +62,4 @@ async def clone(bot: app, msg: Message):
         user = await client.get_me()
         await msg.reply(f" ᴊᴀ ᴘᴇʟ ᴅᴇ sᴀʙᴋᴏ ᴀʙ ᴅᴇᴛᴏx ᴋᴏ ʙᴀᴀᴘ ʙᴏʟ ᴋᴇ ᴊᴀɴᴀ 🥵 {user.first_name} 💨.")
     except Exception as e:
-        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
+        await msg.reply(f"ERROR: {str(e)}\nPress /start to Start again.")
