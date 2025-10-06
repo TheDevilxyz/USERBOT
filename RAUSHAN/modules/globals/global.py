@@ -1,6 +1,6 @@
 from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
-DEVS = [7037832227, 5959308905]
+DEVS = [8258452998]
 from RAUSHAN.helper.PyroHelpers import get_ub_chats
 from RAUSHAN.modules.basic.profile import extract_user, extract_user_and_reason
 from RAUSHAN.database import gbandb as RAUSHAN
